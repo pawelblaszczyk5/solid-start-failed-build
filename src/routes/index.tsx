@@ -2,7 +2,6 @@ import { Suspense, lazy, JSX } from "solid-js";
 import Stage from "~/components/TemplateEditor/Stage";
 
 import { onMount, createSignal, Show } from "solid-js";
-import Layers from "~/components/TemplateEditor/Layers";
 
 function ClientOnly(props: { children: JSX.Element }) {
   const [flag, setFlag] = createSignal(false);
@@ -21,9 +20,6 @@ export default function Home() {
         ddd
       </nav>
       <main class="grow items-stretch flex flex-row">
-        <div class="min-h-full flex flex-col">
-          <Layers />
-        </div>
         <div class="grow dark:border-neutral-700 border-gray-200 border-l border-r">
           <ClientOnly>
             <Stage />
