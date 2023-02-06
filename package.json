@@ -15,10 +15,13 @@
     "vite": "^3.2.5"
   },
   "dependencies": {
+    "@rollup/plugin-alias": "^4.0.3",
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "@solidjs/meta": "^0.28.2",
     "@solidjs/router": "^0.7.0",
     "canvas": "^2.11.0",
     "konva": "^8.4.2",
+    "rollup-plugin-natives": "^0.7.6",
     "solid-js": "^1.6.9",
     "solid-start": "^0.2.15",
     "undici": "^5.15.1"

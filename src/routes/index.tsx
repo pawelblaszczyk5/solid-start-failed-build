@@ -1,19 +1,12 @@
 import { Suspense, lazy, JSX } from "solid-js";
-import Stage from "~/components/TemplateEditor/Stage";
+import { unstable_clientOnly } from "solid-start";
 
 import { onMount, createSignal, Show } from "solid-js";
 
-function ClientOnly(props: { children: JSX.Element }) {
-  const [flag, setFlag] = createSignal(false);
-
-  onMount(() => {
-    setFlag(true);
-  });
-
-  return <Show when={flag()}>{props.children}</Show>;
-}
-
 export default function Home() {
+  const Stage = unstable_clientOnly(
+    async () => import("~/components/TemplateEditor/Stage")
+  );
   return (
     <>
       <nav class="flex flex-row dark:border-neutral-700 border-gray-200 border-b">
@@ -21,9 +14,7 @@ export default function Home() {
       </nav>
       <main class="grow items-stretch flex flex-row">
         <div class="grow dark:border-neutral-700 border-gray-200 border-l border-r">
-          <ClientOnly>
-            <Stage />
-          </ClientOnly>
+          <Stage />
         </div>
         <div>right prop</div>
       </main>
