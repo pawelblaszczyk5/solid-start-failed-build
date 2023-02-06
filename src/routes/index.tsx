@@ -1,4 +1,6 @@
-import Stage from "~/components/TemplateEditor/Stage";
+import clientOnly from "~/clientOnly";
+
+const Stage = clientOnly(() => import("~/components/TemplateEditor/Stage"));
 
 export default function Home() {
   return (
