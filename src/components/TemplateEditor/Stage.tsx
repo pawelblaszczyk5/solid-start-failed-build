@@ -1,5 +1,5 @@
-import { onMount, onCleanup, createEffect, createSignal } from "solid-js";
-import Konva from "konva";
+import { onMount, onCleanup, createSignal } from "solid-js";
+import type Konva from "konva";
 
 export default function Stage() {
   const [stageWidth, setStageWidth] = createSignal(0);
@@ -23,10 +23,12 @@ export default function Stage() {
     }, 0);
   };
 
-  onMount(() => {
+  onMount(async () => {
+    const { Stage } = (await import("konva")).default;
+
     if (!stage()) {
       setStage(
-        new Konva.Stage({
+        new Stage({
           container: mainStageCanvasContainer!,
           width: stageWidth(),
           height: stageHeight(),
@@ -35,7 +37,7 @@ export default function Stage() {
     }
     if (!transparentStage()) {
       setTransparentStage(
-        new Konva.Stage({
+        new Stage({
           container: stageSemiTransparentBackgroundStage!,
           width: stageWidth(),
           height: stageHeight(),
